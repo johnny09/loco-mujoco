@@ -18,8 +18,16 @@ from .toddlerbot import ToddlerBot
 from .toddlerbot_mjx import MjxToddlerBot
 from .fourier_gr1t2 import FourierGR1T2
 from .fourier_gr1t2_mjx import MjxFourierGR1T2
-from .skeletons import (SkeletonTorque, MjxSkeletonTorque, HumanoidTorque, SkeletonMuscle, MjxSkeletonMuscle,
-                        HumanoidMuscle)
+from .skeletons import (
+    SkeletonTorque,
+    MjxSkeletonTorque,
+    HumanoidTorque,
+    SkeletonMuscle,
+    MjxSkeletonMuscle,
+    HumanoidMuscle,
+)
+from .pnd_adam_lite import PndAdamLite
+from .pnd_adam_sp import PndAdamSp
 
 
 # register environments in mushroom
@@ -47,6 +55,8 @@ SkeletonMuscle.register()
 MjxSkeletonMuscle.register()
 MyoSkeleton.register()
 MjxMyoSkeleton.register()
+PndAdamLite.register()
+PndAdamSp.register()
 
 # compatability with old names
 HumanoidTorque.register()
@@ -55,6 +65,6 @@ HumanoidMuscle.register()
 from gymnasium import register
 
 # register gymnasium wrapper environment
-register("LocoMujoco",
-         entry_point="loco_mujoco.core.wrappers.gymnasium:GymnasiumWrapper"
-         )
+register(
+    "LocoMujoco", entry_point="loco_mujoco.core.wrappers.gymnasium:GymnasiumWrapper"
+)
