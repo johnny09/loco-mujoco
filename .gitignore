@@ -27,3 +27,4 @@ loco_mujoco/LOCOMUJOCO_VARIABLES.yaml
 **/expert_traj.npz
 
 motion_data/
+output/
