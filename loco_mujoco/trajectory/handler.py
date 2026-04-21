@@ -54,6 +54,16 @@ class TrajectoryHandler(StatefulObject):
         # filter/extend the trajectory based on the model/data
         traj_data, traj_info = self.filter_and_extend(traj.data, traj.info, model)
 
+        # early sanity check: trajectory dimensions must match the model
+        if traj_data.xpos.size > 0 and traj_data.xpos.shape[1] != model.nbody:
+            raise ValueError(
+                f"Trajectory xpos body dimension ({traj_data.xpos.shape[1]}) does not match "
+                f"the environment model nbody ({model.nbody}) after filter_and_extend. "
+                f"Trajectory body_names ({traj_info.body_names}) vs model bodies "
+                f"({[mujoco.mj_id2name(model, mujoco.mjtObj.mjOBJ_BODY, i) for i in range(model.nbody)]}). "
+                f"Please re-export the trajectory using the same model XML."
+            )
+
         # todo: implement this in observation types in init_from_traj!
         #self.check_if_trajectory_is_in_range(low, high, keys, joint_pos_idx, warn, clip_trajectory_to_joint_ranges)
 

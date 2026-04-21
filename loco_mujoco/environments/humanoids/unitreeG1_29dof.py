@@ -226,7 +226,7 @@ class UnitreeG1_29dof(BaseRobotHumanoid):
         """
         Returns the default XML file path for the Unitree G1 29-DOF environment.
         """
-        return (loco_mujoco.PATH_TO_MODELS / "unitree_g1" / "g1_29dof.xml").as_posix()
+        return (loco_mujoco.PATH_TO_MODELS / "unitree_g1" / "g1_29dof_feetonly.xml").as_posix()
 
     @info_property
     def upper_body_xml_name(self) -> str:
